@@ -7,6 +7,10 @@ import com.pusher.android.PusherAndroid;
 import com.pusher.android.notifications.ManifestValidator;
 import com.pusher.android.notifications.PushNotificationRegistration;
 import com.pusher.android.notifications.tokens.PushNotificationRegistrationListener;
+import com.pusher.client.Pusher;
+import com.pusher.client.PusherOptions;
+import com.pusher.client.channel.Channel;
+import com.pusher.client.channel.SubscriptionEventListener;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -14,28 +18,21 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        PusherAndroid pusher = new PusherAndroid("73f50b06535941848a73");
-        PushNotificationRegistration nativePusher = pusher.nativePusher();
-        try {
-            nativePusher.registerFCM(this, new PushNotificationRegistrationListener() {
-                @Override
-                public void onSuccessfulRegistration() {
-                    System.out.println("REGISTRATION SUCCESSFUL!!! YEEEEEHAWWWWW!");
-                }
 
-                @Override
-                public void onFailedRegistration(int statusCode, String response) {
-                    System.out.println(
-                            "A real sad day. Registration failed with code " + statusCode +
-                                    " " + response
-                    );
-                }
-            });
-        } catch (ManifestValidator.InvalidManifestException e) {
-            e.printStackTrace();
-        }
-        nativePusher = pusher.nativePusher();
-        nativePusher.subscribe("message");
+        PusherOptions options = new PusherOptions();
+        options.setCluster("ap2");
+        Pusher pusher = new Pusher("73f50b06535941848a73", options);
+
+        Channel channel = pusher.subscribe("my-channel");
+
+        channel.bind("my-event", new SubscriptionEventListener() {
+            @Override
+            public void onEvent(String channelName, String eventName, final String data) {
+                System.out.println(data);
+            }
+        });
+        pusher.connect();
+
 
 
     }
