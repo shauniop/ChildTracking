@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "344543008524",
+    "firebase_url": "https://childtracking-7e8bb.firebaseio.com",
+    "project_id": "childtracking-7e8bb",
+    "storage_bucket": "childtracking-7e8bb.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:344543008524:android:7e5c850b01189606",
+        "android_client_info": {
+          "package_name": "com.example.shaunkollannur.childtracking"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "344543008524-6b23p2r0e752sti0f1gpte6a8iah4pn9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCcUbp-lMAOm9xFs1su11gU6FI0Zjd8BOc"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
