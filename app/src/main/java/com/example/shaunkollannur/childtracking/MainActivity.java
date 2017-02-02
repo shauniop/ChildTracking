@@ -17,6 +17,9 @@ import com.pusher.client.PusherOptions;
 import com.pusher.client.channel.Channel;
 import com.pusher.client.channel.SubscriptionEventListener;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 public class MainActivity extends AppCompatActivity {
     String s;
     @Override
@@ -34,7 +37,20 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onEvent(String channelName, String eventName, final String data) {
                 System.out.println(data);
-                s=data;
+                JSONObject jObj = null;
+                try {
+                    jObj = new JSONObject(data);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                try {
+                    s="From:- ";
+                    s+=jObj.getString("name");
+                    s+="   Message:- ";
+                    s+=jObj.getString("message");
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
                 addNotification();
 
             }
