@@ -2,17 +2,14 @@ package com.example.shaunkollannur.childtracking;
 
 import android.app.NotificationManager;
 import android.app.PendingIntent;
-import android.content.ComponentName;
+import android.app.Service;
 import android.content.Context;
 import android.content.Intent;
-import android.content.ServiceConnection;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.os.Bundle;
 import android.os.IBinder;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.NotificationCompat;
-import android.view.View;
+import android.widget.Toast;
 
 import com.pusher.client.Pusher;
 import com.pusher.client.PusherOptions;
@@ -22,13 +19,20 @@ import com.pusher.client.channel.SubscriptionEventListener;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public class MainActivity extends AppCompatActivity {
+public class MyService extends Service {
     String str;
-    Intent in;
+    public MyService() {
+    }
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+    public IBinder onBind(Intent intent) {
+        // TODO: Return the communication channel to the service.
+        return null;
+    }
+
+    @Override
+    public int onStartCommand(Intent intent, int flags, int startId) {
+        Toast.makeText(this,"Started",Toast.LENGTH_LONG).show();
         PusherOptions options = new PusherOptions();
         options.setCluster("ap2");
         Pusher pusher = new Pusher("73f50b06535941848a73", options);
@@ -58,13 +62,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
         pusher.connect();
-    }
-    public void startSer(View v){
-        in=new Intent(getBaseContext(),MyService.class);
-        startService(in);
-    }
-    public void stopSer(View v){
-        stopService(in);
+        return START_STICKY;
     }
     public void addNotification(String s) {
         Bitmap bmp= BitmapFactory.decodeResource(this.getResources(),R.drawable.icon);
@@ -92,4 +90,9 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onDestroy() {
+        Toast.makeText(this,"Destroy",Toast.LENGTH_LONG).show();
+        super.onDestroy();
+    }
 }
