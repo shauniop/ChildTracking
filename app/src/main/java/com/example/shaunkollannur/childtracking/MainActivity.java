@@ -2,19 +2,14 @@ package com.example.shaunkollannur.childtracking;
 
 import android.app.NotificationManager;
 import android.app.PendingIntent;
-import android.app.TaskStackBuilder;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.NotificationCompat;
 
-import com.pusher.android.PusherAndroid;
-import com.pusher.android.notifications.ManifestValidator;
-import com.pusher.android.notifications.PushNotificationRegistration;
-import com.pusher.android.notifications.tokens.PushNotificationRegistrationListener;
 import com.pusher.client.Pusher;
 import com.pusher.client.PusherOptions;
 import com.pusher.client.channel.Channel;
