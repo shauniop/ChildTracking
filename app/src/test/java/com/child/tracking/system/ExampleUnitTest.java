@@ -1,4 +1,4 @@
-package com.example.shaunkollannur.childtracking;
+package com.child.tracking.system;
 
 import org.junit.Test;
 
