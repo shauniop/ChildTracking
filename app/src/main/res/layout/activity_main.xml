@@ -10,22 +10,4 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.child.tracking.system.MainActivity">
 
-    <Button
-        android:text="START SERVICE"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="76dp"
-        android:id="@+id/start_ser"
-        android:onClick="startSer" />
-
-    <Button
-        android:text="STOP SERVICE"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/stop_ser"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"
-        android:onClick="stopSer" />
 </RelativeLayout>

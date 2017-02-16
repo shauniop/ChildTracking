@@ -8,16 +8,6 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <service android:name="com.pusher.android.notifications.fcm.FCMMessagingService">
-            <intent-filter android:priority="1000">
-                <action android:name="com.google.firebase.MESSAGING_EVENT" />
-            </intent-filter>
-        </service>
-        <service android:name="com.pusher.android.notifications.fcm.FCMInstanceIDService">
-            <intent-filter android:priority="1000">
-                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
-            </intent-filter>
-        </service>
         <service android:name=".ChildLocationService">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
@@ -38,10 +28,6 @@
             </intent-filter>
         </activity>
 
-        <service
-            android:name="com.child.tracking.system.MyService"
-            android:enabled="true"
-            android:exported="true" />
     </application>
 
 </manifest>
